@@ -16,31 +16,31 @@ const Login = () => {
     };
 
     return (
-        <main className='login'>
-            <form className='login__form' onSubmit={handleSubmit}>
-                <h2 className='login__title'>Log into your account</h2>
-                <label htmlFor='username'>Username</label>
+        <main className='flex justify-center items-center h-screen rounded p-10'>
+            <form className='flex flex-col bg-slate-300 rounded p-2' onSubmit={handleSubmit}>
+                <h2 className='font-bold m-5'>Log into your account</h2>
+                <label className="m-2" htmlFor='username'>Username</label>
                 <input
                     id='username'
                     name='username'
                     type='text'
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className='username'
+                    className='username p-3'
                 />
-                <label htmlFor='password'>Password</label>
+                <label className="m-2" htmlFor='password'>Password</label>
                 <input
                     id='password'
                     type='password'
                     name='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className='password'
+                    className='password p-3'
                 />
-                <button className='loginButton'>LOG IN</button>
-                <p style={{ textAlign: "center", marginTop: "30px" }}>
+                <button className='loginButton p-2 m-5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500'>LOG IN</button>
+                <p className="text-sm m-4">
                     Don't have an account?{" "}
-                    <Link className='link' to='/register'>
+                    <Link className='link underline decoration-4 decoration-sky-500 hover:decoration-sky-900' to='/register'>
                         Create one
                     </Link>
                 </p>
