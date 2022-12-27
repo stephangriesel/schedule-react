@@ -24,7 +24,9 @@ const Signup = () => {
         onSubmit={handleSubmit}
       >
         <h2 className='font-bold m-5'>Create an account</h2>
-        <label htmlFor='m-2'>Email Address</label>
+        <label htmlFor='email' className='m-2'>
+          Email Address
+        </label>
         <input
           className='p-3'
           id='email'
@@ -46,7 +48,9 @@ const Signup = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor='password'>Password</label>
+        <label className='m-2' htmlFor='password'>
+          Password
+        </label>
         <input
           className='password p-3'
           id='password'
