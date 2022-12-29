@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const PORT = 4000;
-const database = [];
-const generateID = () => Math.random().toString(36).substring(2, 10);
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const database = [];
+const generateID = () => Math.random().toString(36).substring(2, 10);
 
 app.get("/api", (req, res) => {
   res.json({
