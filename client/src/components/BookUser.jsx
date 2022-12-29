@@ -1,23 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Error from './Error';
+import { sendEmail } from '../utils/resource';
+import { fetchBookingDetails } from '../utils/resource';
 
 const BookUser = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [schedules, setSchedules] = useState([]);
+  const [timezone, setTimezone] = useState('');
+  const [duration, setDuration] = useState('');
+  const [error, setError] = useState(false);
+  const [receiverEmail, setReceiverEmail] = useState('');
+
   const { user } = useParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email, fullName, message);
+    sendEmail(receiverEmail, email, fullName, message, duration);
     setFullName('');
     setMessage('');
   };
-
-  const [schedules, setSchedules] = useState([]);
-  const [timezone, setTimezone] = useState('');
-  const [error, setError] = useState(false);
-  const [receiverEmail, setReceiverEmail] = useState('');
 
   useEffect(() => {
     fetchBookingDetails(
@@ -30,7 +35,7 @@ const BookUser = () => {
   }, [user]);
 
   if (error) {
-    return <ErrorPage error="User doesn't exist" />;
+    return <Error error="User doesn't exist" />;
   }
 
   return (
