@@ -99,3 +99,13 @@ export async function handleCreateSchedule(
     console.error(err);
   }
 }
+
+export function fetchBookingDetails(
+  user,
+  setError,
+  setTimezone,
+  setSchedules,
+  setReceiverEmail
+) {
+  //...data
+}
