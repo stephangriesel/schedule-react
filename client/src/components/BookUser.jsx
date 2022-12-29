@@ -66,6 +66,14 @@ const BookUser = () => {
         />
 
         <label htmlFor='session'>Select your preferred session</label>
+        <select name='duration' onChange={(e) => setDuration(e.target.value)}>
+          {schedules.map((schedule) => (
+            <option
+              value={`${schedule.day} - ${schedule.startTime}`}
+              key={schedule.day}
+            >{`${schedule.day} - ${schedule.startTime}`}</option>
+          ))}
+        </select>
 
         <button className='bookingBtn'>SEND</button>
       </form>
