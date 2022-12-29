@@ -1,3 +1,38 @@
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
+
+export const sendEmail = (
+  receiverEmail,
+  email,
+  fullName,
+  message,
+  duration
+) => {
+  emailjs
+      .send(
+          "service_d85v3dm",
+          "template_93k66ch",
+          {
+              to_email: receiverEmail,
+              from_email: email,
+              fullName,
+              message,
+              duration,
+          },
+          "ySmgs7LjtAbXP_4hU"
+      )
+      .then(
+          (result) => {
+              console.log(result.text);
+              toast.success("Session booked successfully!");
+          },
+          (error) => {
+              console.log(error.text);
+              toast.error(error.text);
+          }
+      );
+};
+
 export const morningTime = [
   { id: "null", t: "Select" },
   { id: "1", t: "7:00 - 7:45" },
@@ -86,7 +121,7 @@ export async function handleCreateSchedule(
       body: JSON.stringify({
         userId: localStorage.getItem("_id"),
         timezone: selectedTimezone,
-        schedules,
+        schedule,
       }),
       headers: {
         Accept: "application/json",
