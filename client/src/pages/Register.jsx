@@ -37,18 +37,6 @@ const Signup = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label className='m-2' htmlFor='username'>
-          Username
-        </label>
-        <input
-          className='username p-3'
-          id='username'
-          name='username'
-          required
-          type='text'
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
         <label className='m-2' htmlFor='password'>
           Password
         </label>
